@@ -1,0 +1,9 @@
+<!ELEMENT catalogo (producto+)>
+<!ELEMENT catalogo (producto+)>
+<!ELEMENT producto (marca, modelo, precio, talla, stock)>
+<!ATTLIST producto id ID #REQUIRED>
+<!ELEMENT marca (#PCDATA)>
+<!ELEMENT modelo (#PCDATA)>
+<!ELEMENT precio (#PCDATA)>
+<!ELEMENT talla (#PCDATA)>
+<!ELEMENT stock (#PCDATA)>

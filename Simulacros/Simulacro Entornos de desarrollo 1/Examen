@@ -1,0 +1,117 @@
+Actividad Final de Trimestre: Refactorización basada en extracción de funciones
+Introducción y contextualización
+
+Durante este trimestre he aprendido a escribir código más limpio, estructurado y fácil de mantener. En esta actividad aplico el concepto de refactorización basada en extracción de funciones para mejorar un programa de gestión de portafolio.
+El objetivo es identificar las partes del código que realizan tareas específicas (como insertar, mostrar, actualizar y eliminar elementos) y separarlas en funciones. Esto permite que el programa sea más ordenado, reutilizable y comprensible.
+
+Código original
+
+El código inicial del programa era muy lineal, todo estaba en el mismo bloque y resultaba poco legible:
+
+portafolio = []
+
+while True:
+    print("\n1. Añadir activo\n2. Mostrar activos\n3. Actualizar activo\n4. Eliminar activo\n5. Salir")
+    opcion = input("Elige una opción: ")
+
+    if opcion == "1":
+        nombre = input("Nombre del activo: ")
+        valor = float(input("Valor del activo: "))
+        portafolio.append({"nombre": nombre, "valor": valor})
+        print("Activo añadido correctamente.")
+    elif opcion == "2":
+        for activo in portafolio:
+            print(f"{activo['nombre']} - {activo['valor']}")
+    elif opcion == "3":
+        nombre = input("Nombre del activo a actualizar: ")
+        for activo in portafolio:
+            if activo["nombre"] == nombre:
+                nuevo_valor = float(input("Nuevo valor: "))
+                activo["valor"] = nuevo_valor
+                print("Activo actualizado.")
+    elif opcion == "4":
+        nombre = input("Nombre del activo a eliminar: ")
+        portafolio = [a for a in portafolio if a["nombre"] != nombre]
+        print("Activo eliminado.")
+    elif opcion == "5":
+        print("Saliendo del programa...")
+        break
+    else:
+        print("Opción no válida.")
+
+
+Aunque el programa funciona, todo está dentro del mismo bucle y es difícil de mantener o ampliar.
+
+Refactorización mediante extracción de funciones
+
+Para mejorar la estructura, separé las partes que hacían tareas concretas en funciones independientes.
+Cada función tiene un propósito único: añadir, mostrar, actualizar o eliminar activos.
+
+Código refactorizado
+portafolio = []
+
+def añadir_activo():
+    nombre = input("Nombre del activo: ")
+    valor = float(input("Valor del activo: "))
+    portafolio.append({"nombre": nombre, "valor": valor})
+    print("Activo añadido correctamente.")
+
+def mostrar_activos():
+    if not portafolio:
+        print("No hay activos en el portafolio.")
+    else:
+        for activo in portafolio:
+            print(f"{activo['nombre']} - {activo['valor']}")
+
+def actualizar_activo():
+    nombre = input("Nombre del activo a actualizar: ")
+    for activo in portafolio:
+        if activo["nombre"] == nombre:
+            nuevo_valor = float(input("Nuevo valor: "))
+            activo["valor"] = nuevo_valor
+            print("Activo actualizado.")
+            return
+    print("Activo no encontrado.")
+
+def eliminar_activo():
+    nombre = input("Nombre del activo a eliminar: ")
+    global portafolio
+    portafolio = [a for a in portafolio if a["nombre"] != nombre]
+    print("Activo eliminado.")
+
+def menu():
+    while True:
+        print("\n1. Añadir activo\n2. Mostrar activos\n3. Actualizar activo\n4. Eliminar activo\n5. Salir")
+        opcion = input("Elige una opción: ")
+
+        if opcion == "1":
+            añadir_activo()
+        elif opcion == "2":
+            mostrar_activos()
+        elif opcion == "3":
+            actualizar_activo()
+        elif opcion == "4":
+            eliminar_activo()
+        elif opcion == "5":
+            print("Saliendo del programa...")
+            break
+        else:
+            print("Opción no válida.")
+
+menu()
+
+Aplicación práctica y beneficios
+
+Al aplicar la extracción de funciones:
+
+Mejoré la legibilidad del código, ya que cada parte tiene una función con un nombre descriptivo.
+
+Logré reutilizar las funciones en caso de necesitar esas acciones en otro programa.
+
+El código es más fácil de mantener, porque si quiero cambiar cómo se añaden o muestran los activos, solo modifico esa función sin afectar las demás.
+
+Conclusión
+
+Con este ejercicio entendí la importancia de la refactorización para mejorar la calidad del código sin cambiar su funcionalidad.
+Aplicar extracción de funciones me ayudó a organizar el programa y comprender cómo dividir un problema en partes pequeñas y manejables.
+Este proceso refuerza los conceptos aprendidos durante el trimestre sobre modularidad, reutilización y claridad del código, que son esenciales en el desarrollo profesional de software.

@@ -1,0 +1,105 @@
+Instalación y configuración de Ubuntu Server 24.04 en VirtualBox
+Introducción y contextualización
+
+En esta práctica he aprendido a instalar y configurar un servidor Linux con Ubuntu Server 24.04 en una máquina virtual utilizando VirtualBox. Este ejercicio es fundamental para entender cómo funciona la administración de servidores en entornos profesionales, donde se instalan y configuran servicios como bases de datos, aplicaciones web y servidores HTTP.
+
+He trabajado con herramientas básicas de gestión del sistema, instalación de paquetes y configuración de servicios, lo que me ayuda a comprender la base del trabajo de un administrador de sistemas o un desarrollador backend.
+
+Desarrollo técnico
+
+Creación de la máquina virtual
+
+Abrí Oracle VirtualBox y creé una nueva máquina llamada UbuntuServerJose.
+
+Asigné 4096 MB de RAM y 4 procesadores.
+
+Monté la ISO de Ubuntu Server 24.04.
+
+Durante la instalación, seleccioné la opción de usar todo el disco y acepté las configuraciones por defecto.
+
+Configuración inicial del sistema
+Una vez iniciado el sistema, ejecuté:
+
+sudo apt update
+sudo apt install net-tools
+ifconfig
+
+
+Esto me permitió actualizar los paquetes, instalar herramientas de red y comprobar la IP local asignada a la máquina.
+
+Instalación del servidor SSH
+Instalé el servicio SSH para poder conectarme remotamente al servidor:
+
+sudo apt install openssh-server
+sudo systemctl status ssh
+
+
+Confirmé que el servicio aparecía como “active (running)”.
+
+Instalación y configuración de MySQL
+Para gestionar bases de datos, instalé MySQL Server:
+
+sudo apt install mysql-server
+sudo mysql_secure_installation
+
+
+Respondí “yes” a todas las preguntas para reforzar la seguridad, como eliminar usuarios anónimos y desactivar el acceso remoto del root.
+
+Configuración de Python y Flask
+Después instalé Python 3 y pip:
+
+sudo apt install python3-pip
+
+
+Luego instalé Flask, un microframework para aplicaciones web:
+
+pip3 install flask --break-system-packages
+
+
+Flask me servirá más adelante para desplegar aplicaciones web dinámicas en el servidor.
+
+Instalación y configuración de Apache2
+Instalé el servidor web Apache:
+
+sudo apt install apache2
+
+
+Reemplacé la página por defecto con un mensaje personalizado:
+
+cd /var/www/html
+sudo mv index.html index_old.html
+sudo nano index.html
+
+
+Dentro del archivo escribí:
+
+<h1>Hola mundo</h1>
+
+
+Guardé los cambios y verifiqué que Apache estaba en ejecución:
+
+sudo systemctl status apache2
+
+
+Finalmente, abrí el navegador y accedí a la dirección http://192.168.1.176
+, donde se mostró correctamente el mensaje “Hola mundo”.
+
+Aplicación práctica
+
+Con esta configuración, mi servidor Ubuntu ya tiene activos tres servicios fundamentales:
+
+SSH, para administración remota.
+
+MySQL, para bases de datos.
+
+Apache2, para servir contenido web.
+
+Además, tengo Python y Flask listos para desplegar aplicaciones web dinámicas.
+Esta configuración básica replica la infraestructura mínima de un servidor en producción, permitiendo alojar y gestionar aplicaciones reales.
+
+Conclusión
+
+Este ejercicio me ha ayudado a entender cómo se configura un servidor Linux desde cero, instalando y asegurando servicios esenciales.
+He comprobado la importancia de mantener un entorno ordenado, de aplicar medidas de seguridad como mysql_secure_installation, y de utilizar servicios como Apache o SSH de forma controlada.
+
+Todo esto se relaciona directamente con la unidad de administración de sistemas operativos, ya que me permite comprender cómo funcionan los entornos de servidor y cómo puedo preparar una infraestructura base para desplegar aplicaciones web profesionales.

@@ -1,0 +1,97 @@
+🧩 1. Entender qué hace el programa original
+
+Primero, mira el código original y fíjate en qué partes hace tareas concretas.
+En tu caso:
+
+Añadir un activo
+
+Mostrar activos
+
+Actualizar un activo
+
+Eliminar un activo
+
+Mostrar el menú y pedir una opción
+
+Todo eso estaba dentro del mismo while True, lo que hace que el código sea largo y difícil de mantener.
+
+🪄 2. Detectar bloques que se pueden convertir en funciones
+
+Cada vez que el código repite una tarea o hace algo con un propósito claro, conviene crear una función.
+Por ejemplo:
+
+if opcion == "1":
+    nombre = input("Nombre del activo: ")
+    valor = float(input("Valor del activo: "))
+    portafolio.append({"nombre": nombre, "valor": valor})
+    print("Activo añadido correctamente.")
+
+
+➡️ Esto se puede convertir en una función llamada añadir_activo().
+
+Haz lo mismo con las demás opciones (mostrar, actualizar, eliminar).
+
+⚙️ 3. Crear las funciones
+
+Cada bloque se convierte en una función que hace solo una tarea.
+
+Por ejemplo:
+
+def añadir_activo():
+    nombre = input("Nombre del activo: ")
+    valor = float(input("Valor del activo: "))
+    portafolio.append({"nombre": nombre, "valor": valor})
+    print("Activo añadido correctamente.")
+
+
+Haz lo mismo con:
+
+mostrar_activos()
+
+actualizar_activo()
+
+eliminar_activo()
+
+🧭 4. Crear una función principal con el menú
+
+Después, crea una función llamada menu() que controle todo el flujo del programa, pero sin escribir toda la lógica dentro.
+Solo llama a las funciones que creaste:
+
+def menu():
+    while True:
+        print("\n1. Añadir activo\n2. Mostrar activos\n3. Actualizar activo\n4. Eliminar activo\n5. Salir")
+        opcion = input("Elige una opción: ")
+
+        if opcion == "1":
+            añadir_activo()
+        elif opcion == "2":
+            mostrar_activos()
+        elif opcion == "3":
+            actualizar_activo()
+        elif opcion == "4":
+            eliminar_activo()
+        elif opcion == "5":
+            print("Saliendo del programa...")
+            break
+        else:
+            print("Opción no válida.")
+
+
+Y al final, simplemente llamas al menú:
+
+menu()
+
+🧹 5. Probar y ajustar
+
+Ejecuta el programa para comprobar que sigue haciendo exactamente lo mismo.
+Si todo funciona igual, ¡has refactorizado correctamente! 🎉
+
+💡 Beneficios que consigues
+
+Código más limpio y fácil de leer.
+
+Puedes reutilizar las funciones en otros programas.
+
+Si hay un error o un cambio, solo modificas una parte del código.
+
+Es más fácil de probar y mantener.

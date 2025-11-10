@@ -1,0 +1,156 @@
+1. Prepara el entorno
+
+Antes de empezar, necesitas:
+
+Oracle VirtualBox instalado (ya lo usas).
+
+La ISO de Ubuntu Server 24.04 (puedes descargarla desde la web oficial de Ubuntu).
+
+Guárdala en una carpeta fácil de localizar, porque la vas a montar en la máquina virtual.
+
+⚙️ 2. Crea la máquina virtual
+
+Abre VirtualBox y haz clic en Nueva.
+
+Nómbrala, por ejemplo:
+👉 UbuntuServerJose.
+
+Tipo: Linux
+Versión: Ubuntu (64-bit)
+
+Asigna:
+
+Memoria RAM: entre 2048 MB y 4096 MB
+
+Procesadores: 2 o 4 (si tu PC lo permite)
+
+Crea un disco duro virtual (20 GB o más, tipo VDI, reservado dinámicamente).
+
+En el apartado de Almacenamiento, monta la ISO de Ubuntu Server 24.04 como “unidad óptica”.
+
+Guarda y arranca la máquina.
+
+💿 3. Instala Ubuntu Server
+
+Selecciona el idioma y teclado (Español).
+
+En la instalación, elige:
+
+“Instalar Ubuntu Server”
+
+En particionado, selecciona “Usar todo el disco”.
+
+Crea un usuario (por ejemplo: jose) y contraseña.
+
+Acepta las configuraciones por defecto.
+
+Espera a que se instale y reinicia.
+
+💡 Cuando te pida retirar el medio, simplemente quita la ISO desde “Dispositivos > Unidades ópticas > Quitar disco”.
+
+🔧 4. Primeros comandos tras iniciar
+
+Inicia sesión con tu usuario y contraseña y escribe:
+
+sudo apt update
+sudo apt install net-tools
+
+
+Esto actualiza el sistema e instala las herramientas de red.
+Para ver la IP de tu servidor:
+
+ifconfig
+
+
+Anota la IP (la usarás luego en el navegador).
+
+🔐 5. Instala el servidor SSH
+
+SSH te permite conectarte desde tu ordenador al servidor por terminal.
+
+sudo apt install openssh-server
+sudo systemctl status ssh
+
+
+Debe aparecer “active (running)”.
+Si no, puedes iniciarlo con:
+
+sudo systemctl start ssh
+
+🗃️ 6. Instala y configura MySQL
+
+Instala MySQL Server:
+
+sudo apt install mysql-server
+
+
+Luego ejecuta la configuración segura:
+
+sudo mysql_secure_installation
+
+
+Responde “yes” a todo (para desactivar usuarios anónimos y mejorar seguridad).
+
+🐍 7. Instala Python y Flask
+
+Instala Python y pip:
+
+sudo apt install python3-pip
+
+
+Instala Flask:
+
+pip3 install flask --break-system-packages
+
+
+💡 Flask es útil si luego quieres crear una app web sencilla con Python.
+
+🌐 8. Instala Apache2 (servidor web)
+
+Instala Apache:
+
+sudo apt install apache2
+
+
+Revisa que esté activo:
+
+sudo systemctl status apache2
+
+
+Si está activo, cambia la página por defecto:
+
+cd /var/www/html
+sudo mv index.html index_old.html
+sudo nano index.html
+
+
+Dentro del archivo, escribe:
+
+<h1>Hola mundo</h1>
+
+
+Guarda con Ctrl + O, presiona Enter, y sal con Ctrl + X.
+
+🧭 9. Prueba el servidor en tu navegador
+
+Desde tu ordenador (no dentro de la VM), abre el navegador y escribe:
+
+http://[tu-IP]
+
+
+Por ejemplo:
+
+http://192.168.1.176
+
+
+Deberías ver el mensaje “Hola mundo”.
+¡Eso significa que Apache funciona correctamente! 🎉
+
+🧩 10. (Opcional) Prueba el acceso SSH
+
+Desde tu PC (si usas Linux o macOS):
+
+ssh jose@192.168.1.176
+
+
+Desde Windows, puedes usar PowerShell o PuTTY.

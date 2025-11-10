@@ -1,0 +1,18 @@
+[
+    {
+        "id_reserva": 1,
+        "nombre_usuario": "Carlos Pérez",
+        "pista": "Campo de Fútbol 11",
+        "deporte": "Fútbol",
+        "fecha": "2025-11-10",
+        "hora": "18:00"
+    },
+    {
+        "id_reserva": 2,
+        "nombre_usuario": "Ana Torres",
+        "pista": "Pista de Pádel 1",
+        "deporte": "Pádel",
+        "fecha": "2025-11-11",
+        "hora": "20:00"
+    }
+]

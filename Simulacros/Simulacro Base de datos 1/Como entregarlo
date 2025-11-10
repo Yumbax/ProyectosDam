@@ -1,0 +1,56 @@
+💾 1. Entrar a phpMyAdmin
+
+Abro phpMyAdmin desde el navegador:
+
+http://localhost/phpmyadmin
+
+
+y me aseguro de que los servicios Apache y MySQL estén activos en XAMPP.
+
+🗃️ 2. Seleccionar la base de datos
+
+En el panel izquierdo hago clic sobre mi base de datos, por ejemplo:
+👉 blog_virtual
+
+Así me aseguro de que voy a exportar solo esa base de datos (y no todo el servidor).
+
+📤 3. Ir a la pestaña “Exportar”
+
+Arriba, selecciono la pestaña Exportar.
+Ahí phpMyAdmin me mostrará dos opciones:
+
+Rápido (Quick): exporta todo sin configurar nada (lo más práctico).
+
+Personalizado (Custom): permite elegir tablas, formato y más ajustes.
+
+Para esta práctica, con “Rápido” es suficiente.
+
+⚙️ 4. Elegir el formato
+
+Debajo selecciono el formato de archivo:
+
+Elijo SQL (es el formato estándar de bases de datos MySQL).
+
+💾 5. Descargar el archivo
+
+Pulso el botón “Continuar” o “Go”.
+El navegador descargará un archivo llamado algo así como:
+
+blog_virtual.sql
+
+
+Ese archivo contiene todas las tablas, datos e instrucciones necesarias para recrear tu base de datos.
+
+📥 6. (Opcional) Importarla después
+
+Si quieres volver a cargar esa base de datos en otro momento o en otro ordenador:
+
+En phpMyAdmin, creas una base de datos vacía (por ejemplo, también blog_virtual).
+
+Entras en esa base.
+
+Vas a la pestaña Importar.
+
+Seleccionas el archivo .sql que guardaste.
+
+Pulsas Continuar → y phpMyAdmin reconstruirá todo automáticamente (tablas, datos, relaciones, etc.).

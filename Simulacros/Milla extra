@@ -1,0 +1,197 @@
+Ejercicio de Milla Extra – Sistemas Informáticos
+Proyecto: Servidor Web Multiusuario con Automatización y Seguridad
+Introducción y contextualización (Unidad 1: Conceptos básicos de sistemas informáticos)
+
+En este ejercicio he creado una infraestructura completa en VirtualBox simulando un entorno profesional: un servidor Ubuntu Server 24.04 con varios servicios instalados y configurados, varios usuarios con distintos permisos, y scripts de automatización para facilitar la administración.
+
+El objetivo es aplicar de forma práctica todos los conocimientos adquiridos durante el trimestre: instalación de sistemas, gestión de usuarios, configuración de red, instalación de servicios, seguridad, y automatización con scripts de shell.
+
+🧱 Estructura general del proyecto
+
+Máquina virtual: UbuntuServerJose
+
+SO: Ubuntu Server 24.04 LTS
+
+IP estática: 192.168.1.200
+
+Servicios:
+
+Apache2 (servidor web)
+
+SSH (administración remota)
+
+MySQL (base de datos local)
+
+Usuarios configurados:
+
+adminjose → administrador con sudo
+
+editor → usuario con permisos sobre /var/www/html
+
+invitado → usuario sin privilegios
+
+Script de automatización: configuracion_inicial.sh
+
+🧩 Unidad 2: Instalación y configuración de sistemas operativos
+
+Creación de la máquina virtual
+
+VirtualBox → Nueva VM llamada UbuntuServerJose
+
+4096 MB de RAM, 4 procesadores, 20 GB de disco
+
+ISO de Ubuntu Server 24.04 montada
+
+Instalación del sistema
+
+Seleccioné Usar todo el disco
+
+Configuré idioma, usuario y contraseña
+
+Desactivé servicios no necesarios
+
+Actualicé el sistema:
+
+sudo apt update && sudo apt upgrade -y
+
+⚙️ Unidad 3: Configuración de red y servicios básicos
+
+Configuración de IP estática
+Edité el archivo de red:
+
+sudo nano /etc/netplan/00-installer-config.yaml
+
+
+Y añadí:
+
+network:
+  ethernets:
+    enp0s3:
+      dhcp4: no
+      addresses: [192.168.1.200/24]
+      gateway4: 192.168.1.1
+      nameservers:
+        addresses: [8.8.8.8, 1.1.1.1]
+  version: 2
+
+
+Luego apliqué:
+
+sudo netplan apply
+
+
+Verificación:
+
+ifconfig
+ping google.com
+
+
+Instalación de servicios básicos
+
+sudo apt install net-tools openssh-server apache2 mysql-server -y
+
+👤 Unidad 4: Gestión de usuarios, grupos y permisos
+
+Creación de usuarios:
+
+sudo adduser adminjose
+sudo adduser editor
+sudo adduser invitado
+
+
+Permisos:
+
+adminjose: pertenece al grupo sudo
+
+sudo usermod -aG sudo adminjose
+
+
+editor: acceso al directorio web
+
+sudo chown -R editor:www-data /var/www/html
+sudo chmod -R 775 /var/www/html
+
+
+invitado: sin permisos administrativos
+
+Comprobación de permisos:
+
+ls -l /var/www/html
+su editor
+touch /var/www/html/prueba.txt
+
+🔐 Unidad 5: Seguridad en sistemas operativos
+
+Fortalecer MySQL:
+
+sudo mysql_secure_installation
+
+
+→ Respondí “yes” a todo.
+
+Configurar cortafuegos UFW:
+
+sudo apt install ufw
+sudo ufw allow OpenSSH
+sudo ufw allow 'Apache Full'
+sudo ufw enable
+sudo ufw status
+
+
+Revisión de servicios activos:
+
+sudo systemctl status apache2
+sudo systemctl status ssh
+
+⚡ Unidad 6: Automatización de tareas en sistemas operativos
+
+Creé un script bash llamado configuracion_inicial.sh que automatiza varias tareas de configuración del sistema.
+
+Archivo: /home/adminjose/configuracion_inicial.sh
+
+#!/bin/bash
+echo "=== CONFIGURACIÓN INICIAL DEL SERVIDOR ==="
+sudo apt update && sudo apt upgrade -y
+sudo apt install apache2 mysql-server net-tools openssh-server -y
+sudo ufw allow OpenSSH
+sudo ufw allow 'Apache Full'
+sudo ufw enable
+sudo systemctl enable apache2
+sudo systemctl enable ssh
+echo "<h1>Servidor configurado por Jose</h1>" | sudo tee /var/www/html/index.html
+echo "=== CONFIGURACIÓN COMPLETA ==="
+
+
+Le di permisos de ejecución:
+
+chmod +x configuracion_inicial.sh
+
+
+Y lo probé con:
+
+./configuracion_inicial.sh
+
+🌐 Unidad 7: Monitorización y mantenimiento
+
+Comprobación de espacio y procesos
+
+df -h
+top
+
+
+Comprobación de logs
+
+tail -f /var/log/syslog
+
+
+Backup de configuración del servidor web
+
+sudo tar -cvzf backup_html.tar.gz /var/www/html
+
+Conclusión (Unidad 8: Administración y documentación de sistemas)
+
+Con este ejercicio he integrado todo lo aprendido durante el trimestre en Sistemas Informáticos: instalación de un sistema operativo, configuración de red, gestión de usuarios, permisos, instalación y securización de servicios, y automatización con scripts.
+
+He conseguido montar un entorno realista de servidor Linux completamente funcional dentro de VirtualBox, aplicando tanto comandos básicos como tareas de administración más avanzadas.
+
+Este tipo de configuración es la base de cualquier infraestructura profesional, y demuestra mi capacidad para preparar un servidor desde cero, hacerlo seguro, y dejarlo funcionando de forma estable.

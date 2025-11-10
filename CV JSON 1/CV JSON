@@ -1,0 +1,51 @@
+{
+  "datos_personales": {
+    "nombre": "Diego",
+    "email": "Diegofo@outlook.es",
+    "telefono": "625862778",
+    "perfil": "Estudiante de Desarrollo de Aplicaciones Multiplataforma con pasión por la tecnología y el desarrollo de software. Tengo 4 años de experiencia como cocinero, lo que me ha dado disciplina, organización y capacidad para trabajar bajo presión."
+  },
+  "formacion": [
+    {
+      "titulo": "Ciclo Formativo de Grado Superior en DAM",
+      "centro": "Tame Mislata",
+      "anio_inicio": 2025,
+      "anio_fin": "Actualidad"
+    },
+    {
+      "titulo": "Grado Medio en Sistemas Microinformáticos y Redes",
+      "centro": "Tame Mislata",
+      "anio_inicio": 2023,
+      "anio_fin": 2025
+    }
+  ],
+  "experiencia_profesional": [
+    {
+      "puesto": "Cocinero",
+      "empresas": ["La Piazza", "Saona", "Foster’s Hollywood", "The Fitzgerald", "Nanami JD"],
+      "periodo": "2020 - 2024",
+      "descripcion": "Encargado de preparar platos, coordinar la cocina y mantener la calidad del servicio. Aprendí a trabajar en equipo, organizar tiempos y adaptarme a situaciones exigentes."
+    }
+  ],
+  "idiomas": [
+    {"idioma": "Español", "nivel": "Nativo"},
+    {"idioma": "Inglés", "nivel": "Intermedio (B1)"}
+  ],
+  "vehiculos": {
+    "carnet": "B",
+    "vehiculo_propio": true
+  },
+  "aficiones_y_hobbies": [
+    "Programación y tecnología",
+    "Videojuegos",
+    "Gimnasio y senderismo",
+    "Cocina creativa"
+  ],
+  "habilidades": [
+    "HTML, CSS, JavaScript",
+    "Java, SQL",
+    "Trabajo en equipo",
+    "Organización",
+    "Aprendizaje rápido"
+  ]
+}

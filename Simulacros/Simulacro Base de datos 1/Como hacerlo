@@ -1,0 +1,92 @@
+🧩 1. Entrar en phpMyAdmin
+
+Abro XAMPP (o Laragon, según lo que tenga instalado).
+
+Inicio los servicios de Apache y MySQL.
+
+Entro a phpMyAdmin desde el navegador escribiendo:
+
+http://localhost/phpmyadmin
+
+🗃️ 2. Crear la base de datos
+
+En la parte superior hago clic en “Nueva”.
+
+Pongo el nombre de la base de datos, por ejemplo:
+
+blog_virtual
+
+
+Elijo el cotejamiento utf8_general_ci para que acepte tildes y caracteres especiales.
+
+Pulso Crear.
+
+📄 3. Crear la tabla de autores
+
+Antes de crear entradas, necesito la tabla autores, ya que entradas tendrá una clave foránea que depende de ella.
+
+En la pestaña SQL, escribo:
+
+CREATE TABLE autores (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    nombre VARCHAR(50),
+    apellido VARCHAR(50)
+);
+
+
+Después, inserto algunos autores de ejemplo:
+
+INSERT INTO autores (nombre, apellido) VALUES
+('Juan', 'Pérez'),
+('María', 'López'),
+('Carlos', 'García'),
+('Ana', 'Martínez'),
+('Luis', 'Fernández');
+
+📝 4. Crear la tabla de entradas
+
+Luego creo la tabla entradas, que tiene la clave foránea hacia autores:
+
+CREATE TABLE entradas (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    titulo VARCHAR(100),
+    contenido TEXT,
+    fecha DATE,
+    autor INT,
+    FOREIGN KEY (autor) REFERENCES autores(id)
+);
+
+💾 5. Insertar las entradas
+
+En la pestaña SQL escribo:
+
+INSERT INTO entradas (titulo, contenido, fecha, autor) VALUES
+('¿Qué es la programación?', 'La programación es...', '2023-04-01', 1),
+('Cómo aprender a cocinar', 'Hay muchos recursos...', '2023-04-02', 2),
+('Viajes alrededor del mundo', 'Algunos destinos...', '2023-04-03', 3),
+('El arte de la pintura', 'Los maestros...', '2023-04-04', 4),
+('La ciencia y la tecnología', 'Avances recientes...', '2023-04-05', 5);
+
+🔍 6. Realizar la consulta con JOIN
+
+Para ver las entradas junto con los autores, hago clic en la pestaña SQL y ejecuto:
+
+SELECT 
+    entradas.titulo,
+    entradas.contenido,
+    entradas.fecha,
+    autores.nombre,
+    autores.apellido
+FROM entradas
+LEFT JOIN autores ON entradas.autor = autores.id;
+
+
+Esto mostrará una tabla combinada con los títulos, contenidos, fechas y los nombres y apellidos de los autores.
+
+✅ 7. Verificación
+
+Si todo está correcto:
+
+phpMyAdmin mostrará el resultado con todas las columnas.
+
+Veré que los datos de cada entrada se relacionan con el autor correcto.

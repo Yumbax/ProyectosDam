@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="catalogo.xsl"?>
+<catalogo>
+    <producto id="S001">
+        <marca>Nike</marca>
+        <modelo>Air Max 90</modelo>
+        <precio>149.99</precio>
+        <talla>42</talla>
+        <stock>15</stock>
+    </producto>
+
+    <producto id="S002">
+        <marca>Adidas</marca>
+        <modelo>Yeezy Boost 350</modelo>
+        <precio>219.99</precio>
+        <talla>43</talla>
+        <stock>8</stock>
+    </producto>
+
+    <producto id="S003">
+        <marca>Puma</marca>
+        <modelo>RS-X³</modelo>
+        <precio>129.99</precio>
+        <talla>41</talla>
+        <stock>20</stock>
+    </producto>
+</catalogo>

@@ -1,0 +1,28 @@
+{
+    "catalogo": [
+        {
+            "id": "S001",
+            "marca": "Nike",
+            "modelo": "Air Max 90",
+            "precio": 149.99,
+            "talla": 42,
+            "stock": 15
+        },
+        {
+            "id": "S002",
+            "marca": "Adidas",
+            "modelo": "Yeezy Boost 350",
+            "precio": 219.99,
+            "talla": 43,
+            "stock": 8
+        },
+        {
+            "id": "S003",
+            "marca": "Puma",
+            "modelo": "RS-X³",
+            "precio": 129.99,
+            "talla": 41,
+            "stock": 20
+        }
+    ]
+}

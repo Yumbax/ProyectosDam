@@ -1,0 +1,115 @@
+🧱 1. Crea los archivos del proyecto
+
+Primero, crea una carpeta (por ejemplo, portafolio) y dentro de ella añade estos tres archivos:
+
+index.html
+
+portafolio.json
+
+(opcionalmente) una carpeta imagenes para las fotos de tus proyectos.
+
+🧩 2. Estructura básica en index.html
+
+Abre tu editor (Visual Studio Code, por ejemplo) y escribe esto:
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <title>El portafolio de Jose Vicente</title>
+    <meta charset="utf-8">
+    <style>
+      body,html{background:grey;font-family:sans-serif;}
+      header,main,footer{background:white;padding:20px;text-align:center;margin:auto;width:600px;}
+      main{display:grid;grid-template-columns:auto auto auto;gap:20px;}
+      article img{width:100%;}
+      h3{color:#333;}
+      p{color:#555;}
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Jose Vicente Carratala</h1>
+      <h2>info@jocarsa.com</h2>
+    </header>
+
+    <main>
+      <!-- Aquí se crearán los proyectos automáticamente -->
+      <template id="plantilla_entrada">
+        <article>
+          <h3></h3>
+          <p></p>
+          <img src="">
+        </article>
+      </template>
+    </main>
+
+    <footer>
+      (c) 2025 Jose Vicente Carratala
+    </footer>
+
+    <script>
+      // Selecciono la plantilla y el destino donde se mostrarán los proyectos
+      let origen = document.querySelector("#plantilla_entrada")
+      let destino = document.querySelector("main")
+
+      // Cargo el archivo JSON con los proyectos
+      fetch("portafolio.json")
+      .then(function(respuesta){ return respuesta.json() })
+      .then(function(datos){
+        datos.forEach(function(dato){
+          // Clono la plantilla
+          let clon = origen.content.cloneNode(true)
+          // Relleno el contenido con los datos del JSON
+          clon.querySelector("h3").textContent = dato.titulo
+          clon.querySelector("p").textContent = dato.descripcion
+          clon.querySelector("img").src = dato.imagen
+          // Lo añado al main
+          destino.appendChild(clon)
+        })
+      })
+    </script>
+  </body>
+</html>
+
+🧾 3. Crea el archivo portafolio.json
+
+En el mismo directorio, crea un archivo llamado portafolio.json y escribe algo como esto:
+
+[
+  {
+    "titulo": "Diseño Web Deportivo",
+    "descripcion": "Página web sobre fútbol con resultados en tiempo real.",
+    "imagen": "imagenes/futbol.jpg"
+  },
+  {
+    "titulo": "Galería Fotográfica",
+    "descripcion": "Aplicación para mostrar fotos de viajes y momentos personales.",
+    "imagen": "imagenes/galeria.jpg"
+  },
+  {
+    "titulo": "Juego en JavaScript",
+    "descripcion": "Mini juego interactivo desarrollado con JavaScript puro.",
+    "imagen": "imagenes/juego.jpg"
+  }
+]
+
+
+Guarda también algunas imágenes (por ejemplo, futbol.jpg, galeria.jpg, juego.jpg) en una carpeta llamada imagenes para que se muestren bien.
+
+🌐 4. Abre la página en el navegador
+
+Abre el archivo index.html haciendo doble clic o desde tu editor con “Abrir con Live Server” (si usas VS Code).
+Si el JSON no carga directamente al abrirlo como archivo local, puedes usar la extensión Live Server o levantar un servidor simple con Python o Node, porque fetch() a veces bloquea archivos locales por seguridad.
+
+Ejemplo con Python:
+
+python -m http.server
+
+
+Después entra en tu navegador en http://localhost:8000
+.
+
+🎨 5. Verás tu portafolio dinámico
+
+Cada bloque de proyecto se creará automáticamente con el título, descripción e imagen que has puesto en el JSON.
+Puedes añadir o eliminar proyectos modificando solo el JSON, sin tocar el HTML.

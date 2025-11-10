@@ -1,0 +1,83 @@
+El portafolio de Jose Vicente Carratala
+Introducción y contextualización
+He creado una página web en la que muestro mi portafolio personal. Este proyecto me ha permitido aplicar lo aprendido sobre HTML, CSS y JavaScript para construir una estructura web completa y dinámica. Me inspiré en mi interés por el mundo digital y creativo para diseñar una web sencilla, pero funcional, donde puedo mostrar mis proyectos de forma visual y ordenada.
+
+Desarrollo técnico
+Primero, estructuré la página con las etiquetas básicas header, main y footer. En el encabezado incluí mi nombre y mi correo, en el cuerpo principal configuré una plantilla de artículos dentro de un <template>, y en el pie de página añadí mis derechos de autor.
+El siguiente código muestra la estructura principal del archivo index.html:
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <title>El portafolio de Jose Vicente</title>
+    <meta charset="utf-8">
+    <style>
+      body,html{background:grey;font-family:sans-serif;}
+      header,main,footer{background:white;padding:20px;text-align:center;margin:auto;width:600px;}
+      main{display:grid;grid-template-columns:auto auto auto;gap:20px;}
+      article img{width:100%;}
+      h3{color:#333;}
+      p{color:#555;}
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Jose Vicente Carratala</h1>
+      <h2>info@jocarsa.com</h2>
+    </header>
+    <main>
+      <template id="plantilla_entrada">
+        <article>
+          <h3></h3>
+          <p></p>
+          <img src="">
+        </article>
+      </template>
+    </main>
+    <footer>
+      (c) 2025 Jose Vicente Carratala
+    </footer>
+
+    <script>
+      let origen = document.querySelector("#plantilla_entrada")
+      let destino = document.querySelector("main")
+      fetch("portafolio.json")
+      .then(function(respuesta){return respuesta.json()})
+      .then(function(datos){
+        datos.forEach(function(dato){
+          let clon = origen.content.cloneNode(true)
+          clon.querySelector("h3").textContent = dato.titulo
+          clon.querySelector("p").textContent = dato.descripcion
+          clon.querySelector("img").src = dato.imagen
+          destino.appendChild(clon)
+        })
+      })
+    </script>
+  </body>
+</html>
+
+Luego, creé un archivo portafolio.json con algunos proyectos de ejemplo:
+[
+  {
+    "titulo": "Diseño Web Deportivo",
+    "descripcion": "Página web sobre fútbol con resultados en tiempo real.",
+    "imagen": "imagenes/futbol.jpg"
+  },
+  {
+    "titulo": "Galería Fotográfica",
+    "descripcion": "Aplicación para mostrar fotos de viajes y momentos personales.",
+    "imagen": "imagenes/galeria.jpg"
+  },
+  {
+    "titulo": "Juego en JavaScript",
+    "descripcion": "Mini juego interactivo desarrollado con JavaScript puro.",
+    "imagen": "imagenes/juego.jpg"
+  }
+]
+
+
+Aplicación práctica
+Al ejecutar la web, el archivo JavaScript carga dinámicamente los proyectos del JSON y los muestra en el main mediante clonación de la plantilla. Gracias a esta estructura, puedo actualizar o añadir nuevos proyectos fácilmente sin tocar el HTML principal, solo modificando el JSON.
+
+Conclusión
+Este ejercicio me ha ayudado a comprender cómo se conectan el HTML, el CSS y el JavaScript para crear páginas web dinámicas. También he visto la utilidad práctica de trabajar con plantillas y archivos JSON para automatizar contenido. Es un paso importante dentro del tema de desarrollo web frontend, ya que me enseña a construir un portafolio real que puedo seguir ampliando a medida que aprenda más.
