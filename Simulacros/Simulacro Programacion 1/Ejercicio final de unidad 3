@@ -1,0 +1,120 @@
+1. Introducción
+
+En esta actividad se amplía el menú CRUD desarrollado en la Unidad 1 y 3, añadiendo la persistencia de datos en MySQL. Esto permite que las acciones del menú —Crear, Leer, Actualizar y Eliminar— interactúen con una base de datos real, haciendo que los cambios se guarden y puedan consultarse posteriormente.
+
+2. Desarrollo
+
+Para implementar la actividad seguimos estos pasos:
+
+Conectamos Python con MySQL usando la librería mysql-connector-python.
+
+Creamos un menú CRUD que muestra las 4 opciones más la opción de salir.
+
+Cada opción ejecuta una consulta SQL sobre la base de datos:
+
+Crear → INSERT INTO
+
+Leer → SELECT * FROM
+
+Actualizar → UPDATE
+
+Eliminar → DELETE FROM
+
+Mostramos mensajes en pantalla para confirmar las operaciones.
+
+3. Aplicación práctica (Código completo)
+import mysql.connector
+
+# --- Conexión a la base de datos ---
+try:
+    conexion = mysql.connector.connect(
+        host="localhost",
+        user="tu_usuario",       
+        password="tu_contraseña", 
+        database="ejercicio_db"
+    )
+    cursor = conexion.cursor()
+    print("Conexión exitosa a la base de datos")
+except mysql.connector.Error as err:
+    print(f"Error al conectar: {err}")
+    exit()
+
+# --- Menú CRUD ---
+while True:
+    print("\nMenú CRUD:")
+    print("1. Crear un usuario")
+    print("2. Leer usuarios")
+    print("3. Actualizar un usuario")
+    print("4. Eliminar un usuario")
+    print("5. Salir")
+    
+    opcion = input("Elige una opción (1-5): ")
+
+    if opcion == "1":  # Crear
+        nombre = input("Nombre: ")
+        edad = input("Edad: ")
+        sql = "INSERT INTO usuarios (nombre, edad) VALUES (%s, %s)"
+        valores = (nombre, edad)
+        cursor.execute(sql, valores)
+        conexion.commit()
+        print("Usuario creado correctamente.")
+
+    elif opcion == "2":  # Leer
+        cursor.execute("SELECT * FROM usuarios")
+        resultados = cursor.fetchall()
+        print("\nUsuarios registrados:")
+        for fila in resultados:
+            print(fila)
+
+    elif opcion == "3":  # Actualizar
+        id_usuario = input("ID del usuario a actualizar: ")
+        nuevo_nombre = input("Nuevo nombre: ")
+        nueva_edad = input("Nueva edad: ")
+        sql = "UPDATE usuarios SET nombre=%s, edad=%s WHERE id=%s"
+        valores = (nuevo_nombre, nueva_edad, id_usuario)
+        cursor.execute(sql, valores)
+        conexion.commit()
+        print("Usuario actualizado correctamente.")
+
+    elif opcion == "4":  # Eliminar
+        id_usuario = input("ID del usuario a eliminar: ")
+        sql = "DELETE FROM usuarios WHERE id=%s"
+        cursor.execute(sql, (id_usuario,))
+        conexion.commit()
+        print("Usuario eliminado correctamente.")
+
+    elif opcion == "5":  # Salir
+        print("Saliendo del programa...")
+        break
+
+    else:
+        print("Opción no válida. Intenta de nuevo.")
+
+# --- Cerrar cursor y conexión ---
+cursor.close()
+conexion.close()
+print("Conexión cerrada")
+
+4. Qué hace el programa
+
+Conecta a la base de datos ejercicio_db.
+
+Muestra un menú con las 4 acciones del CRUD + salir.
+
+Cada acción modifica o consulta la base de datos usando SQL real:
+
+INSERT INTO → agrega un registro
+
+SELECT * FROM → muestra todos los registros
+
+UPDATE → modifica un registro específico
+
+DELETE FROM → elimina un registro específico
+
+Muestra mensajes en pantalla confirmando cada operación.
+
+Al salir, cierra la conexión correctamente.
+
+5. Conclusión
+
+Con este ejercicio he aprendido a integrar Python con MySQL para crear un sistema CRUD funcional. Las acciones del menú ya no son solo simulaciones, sino que persisten datos en la base de datos, lo que simula aplicaciones reales de gestión de información. Además, he reforzado conceptos de SQL y manejo de errores básicos en Python.

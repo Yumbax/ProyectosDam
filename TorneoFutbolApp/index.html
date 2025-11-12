@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organización de Torneos de Fútbol</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Organización de Torneos de Fútbol</h1>
+    </header>
+
+    <main>
+        <section class="form-section">
+            <h2>Crear Torneo</h2>
+            <input type="text" id="nombreTorneo" placeholder="Nombre del torneo">
+            <button onclick="crearTorneo()">Crear Torneo</button>
+        </section>
+
+        <section class="form-section">
+            <h2>Inscribir Equipo</h2>
+            <select id="torneoSelect"></select>
+            <input type="text" id="nombreEquipo" placeholder="Nombre del equipo">
+            <button onclick="inscribirEquipo()">Inscribir Equipo</button>
+        </section>
+
+        <section class="torneos-section">
+            <h2>Torneos</h2>
+            <div id="listaTorneos" class="torneos-container"></div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

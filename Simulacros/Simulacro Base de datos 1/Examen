@@ -1,0 +1,78 @@
+Introduccion
+
+Crearemos una nueva base de datos en phpmyadmin y crearemos dos tablas, piezassportfolio y categoriasportfolio.
+
+
+
+Desarrollo
+Primero vamos a crear las dotas tablas:
+
+piezasportafolio con (Identificador,titulo,descripcion,fecha,id_categoria)
+
+CREATE TABLE piezassportafolio (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    nombre VARCHAR(50),
+    apellido VARCHAR(50)
+);
+
+categoriasportafolio con (Identificador, nombre).   
+
+CREATE TABLE categoriasportafolio (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    nombre VARCHAR(50),
+    apellido VARCHAR(50)
+);
+
+Creamos las claves primarias, y claves foraneas para enlazar autores con piezas.
+
+INSERT INTO categoriasportafolio (Identificador, nombre) VALUES
+(1, 'Pintura'),
+(2, 'Escultura'),
+(3, 'Fotografía');
+
+INSERT INTO piezasportafolio (Identificador, titulo, descripcion, fecha, id_categoria) VALUES
+(1, 'La noche estrellada', 'Obra famosa de Van Gogh', '1889-06-01', 1),
+(2, 'David', 'Escultura de Miguel Ángel', '1504-09-08', 2);
+
+Operaciones CRUD
+
+SELECT (leer):
+
+SELECT * FROM piezasportafolio;
+
+
+UPDATE (modificar):
+
+UPDATE piezasportafolio
+SET titulo = 'Nuevo título'
+WHERE Identificador = 1;
+
+
+DELETE (eliminar):
+
+DELETE FROM piezasportafolio
+WHERE Identificador = 2;
+
+Insertar registros
+
+
+-- Insertar una categoría nueva
+INSERT INTO categoriasportafolio (Identificador, nombre) VALUES (4, 'Dibujo');
+
+-- Insertar una pieza nueva
+INSERT INTO piezasportafolio (Identificador, titulo, descripcion, fecha, id_categoria) 
+VALUES (3, 'Obra C', 'Descripción de obra C', '2023-03-01', 4);
+
+2️⃣ SELECT – leer registros
+
+Para mostrar los datos que hay en la tabla:
+
+-- Leer todas las categorías
+SELECT * FROM categoriasportafolio;
+
+-- Leer todas las piezas
+SELECT * FROM piezasportafolio;
+
+
+
+

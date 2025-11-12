@@ -1,0 +1,46 @@
+Introducción
+
+Para realizar los ejercicios del ciclo estoy utilizando el entorno de desarrollo integrado (IDE) Visual Studio Code (VS Code), que me permite programar en varios lenguajes como Python, HTML, CSS y SQL, gestionar proyectos y probar código de manera eficiente.
+
+Proceso de instalación
+
+Descarga del instalador:
+
+Entré en la página oficial de Visual Studio Code
+ y descargué la versión correspondiente a mi sistema operativo (Windows, Linux o macOS).
+
+Ejecución del instalador:
+
+Abrí el archivo descargado y seguí los pasos del asistente de instalación: aceptar el contrato de licencia, seleccionar la carpeta de instalación y marcar la opción de añadir VS Code al PATH para poder ejecutarlo desde la terminal.
+
+Primer arranque:
+
+Una vez instalado, abrí VS Code y comprobé que todo funcionaba correctamente.
+
+Adaptación y personalización
+
+Temas y apariencia:
+
+Cambié el tema del editor a uno más cómodo para la vista (Dark+ o Solarized) y ajusté el tamaño de la fuente.
+
+Instalación de extensiones:
+
+Instalé extensiones según los lenguajes que utilizo:
+
+Python: para autocompletado, depuración y ejecución de scripts.
+
+HTML/CSS/JavaScript: para resaltar sintaxis, autocompletado y validación.
+
+SQL: extensión que permite conectarme a bases de datos y ejecutar consultas directamente desde VS Code.
+
+Configuración de terminal integrada:
+
+Configuré la terminal integrada para usar Python directamente y facilitar la ejecución de scripts sin salir del editor.
+
+Atajos y ajustes de usuario:
+
+Personalicé atajos de teclado para compilar o ejecutar código rápidamente y ajusté las reglas de formato automático para mantener el código limpio y ordenado.
+
+Conclusión
+
+El uso de VS Code como entorno de desarrollo integrado me ha permitido trabajar de manera más eficiente, tener todos los lenguajes y herramientas en un solo lugar y personalizar el editor según mis necesidades. La instalación y configuración han sido sencillas, y la posibilidad de añadir extensiones hace que pueda adaptarlo a cualquier lenguaje o proyecto del ciclo de DAM.

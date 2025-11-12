@@ -1,0 +1,49 @@
+En esta actividad he aprendido a manejar los errores en programación mediante el uso de try-except en Python. El objetivo es desarrollar una función que inicialmente genere un error, y luego protegerla y capturar los posibles fallos, de forma que pueda procesar varios casos sin que el programa se interrumpa. Esto es fundamental para que el código sea más robusto y confiable.
+
+Desarrollo
+
+Primero, creé una función que genera un error de forma intencionada:
+
+def dividir(a, b):
+    return a / b  # Error si b = 0
+
+
+Esta función provoca un ZeroDivisionError si el divisor es 0, o un TypeError si los valores no son números.
+
+Luego, protejo la función usando try-except para capturar los errores y manejar cada caso:
+
+def dividir_segura(a, b):
+    try:
+        resultado = a / b
+    except ZeroDivisionError:  # Captura división entre cero
+        print(f"Error: No se puede dividir {a} entre 0.")
+        return None
+    except TypeError:  # Captura tipo de dato incorrecto
+        print(f"Error: Los valores {a} y {b} deben ser números.")
+        return None
+    else:
+        return resultado
+    finally:
+        print("Intento de división completado.")
+
+Aplicación práctica
+
+Para probar la función con distintos casos, utilicé un bucle que los procesa uno a uno:
+
+casos = [(10, 2), (5, 0), ("hola", 2), (8, 4)]
+
+for a, b in casos:
+    print(f"Dividiendo {a} entre {b} ->", dividir_segura(a, b))
+
+
+Explicación de la práctica:
+
+Se manejan errores comunes como división por cero o entrada de datos incorrecta.
+
+La función puede procesar varios casos consecutivos sin detener el programa.
+
+El bloque finally siempre se ejecuta para indicar que se intentó la operación.
+
+Conclusión
+
+Con esta actividad he comprendido la importancia de capturar y manejar errores en Python. El uso de try-except permite que el programa sea más robusto y que los errores no interrumpan la ejecución. Además, aprender a preparar funciones para procesar varios casos de forma segura es esencial en cualquier proyecto de programación, ya que evita fallos inesperados y mejora la experiencia del usuario.

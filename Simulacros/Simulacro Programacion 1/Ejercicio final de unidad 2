@@ -1,0 +1,57 @@
+Introducción
+
+En esta actividad he continuado el ejercicio de la Unidad 1, añadiendo la conexión a una base de datos MySQL. El objetivo es aprender a utilizar la librería mysql-connector-python para conectar un programa en Python a una base de datos, ejecutar consultas SELECT y mostrar los resultados por pantalla. Esto me permite combinar los conocimientos de Python con la gestión de bases de datos.
+
+Desarrollo
+
+Para desarrollar la actividad he seguido estos pasos:
+
+Instalar la librería mysql-connector-python para poder conectar Python con MySQL.
+
+Crear un objeto de conexión que permita acceder a la base de datos existente.
+
+Ejecutar un SELECT sobre una tabla de la base de datos para obtener información.
+
+Mostrar los resultados de la consulta por pantalla usando un bucle.
+
+Cerrar la conexión para liberar recursos y mantener la seguridad del sistema.
+
+Este proceso refuerza conceptos de programación orientada a objetos (al crear el objeto de conexión), estructuras de control (al recorrer los resultados con un bucle for) y gestión de datos.
+
+Aplicación práctica
+import mysql.connector
+
+# --- Conexión a la base de datos ---
+try:
+    conexion = mysql.connector.connect(
+        host="localhost",
+        user="tu_usuario",
+        password="tu_contraseña",
+        database="nombre_bd"
+    )
+    print("Conexión exitosa a la base de datos")
+except mysql.connector.Error as err:
+    print(f"Error al conectar: {err}")
+    exit()
+
+# --- Crear cursor para ejecutar consultas ---
+cursor = conexion.cursor()
+
+# --- Ejecutar SELECT sobre una tabla existente ---
+consulta = "SELECT * FROM tabla_ejemplo;"  # reemplaza con tu tabla
+cursor.execute(consulta)
+
+# --- Mostrar resultados ---
+resultados = cursor.fetchall()
+print("\nResultados de la consulta:")
+for fila in resultados:
+    print(fila)
+
+# --- Cerrar cursor y conexión ---
+cursor.close()
+conexion.close()
+print("\nConexión cerrada")
+
+Conclusión
+
+Con esta actividad he aprendido a integrar Python con bases de datos MySQL, permitiendo que un programa recupere información real de una base de datos y la presente al usuario. Esto amplía la funcionalidad de los programas más allá de la consola, acercándome a aplicaciones reales de gestión de datos. Además, he reforzado la importancia de cerrar correctamente las conexiones y de manejar posibles errores al conectarse a la base de datos.

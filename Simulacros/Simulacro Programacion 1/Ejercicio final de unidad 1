@@ -1,0 +1,41 @@
+Introducción
+
+En este ejercicio he creado un programa en Python con el objetivo de aplicar los conocimientos básicos sobre la estructura de un programa informático. El propósito principal es diseñar un pequeño sistema que muestre un menú tipo CRUD, reciba una opción del usuario y la muestre por pantalla.
+
+Desarrollo
+
+Para desarrollar el programa he seguido los pasos indicados:
+
+He comenzado mostrando un mensaje de bienvenida para el usuario.
+
+A continuación, he impreso un menú con las opciones básicas de un CRUD (Crear, Leer, Actualizar y Eliminar).
+
+Luego he utilizado la función input() para recoger la opción elegida por el usuario.
+
+Finalmente, he mostrado la opción seleccionada usando la función print().
+
+El programa está escrito en Python y utiliza estructuras muy simples, como la salida por consola y la entrada de datos mediante teclado.
+
+Aplicación práctica
+# Programa: Menú CRUD básico
+
+# 1. Mensaje de bienvenida
+print("¡Bienvenido al programa de gestión!")
+
+# 2. Menú CRUD
+print("\nMenú principal:")
+print("1. Crear un registro")
+print("2. Leer un registro")
+print("3. Actualizar un registro")
+print("4. Eliminar un registro")
+print("5. Salir")
+
+# 3. Entrada de datos
+opcion = input("\nElige una opción (1-5): ")
+
+# 4. Salida del resultado
+print(f"\nHas seleccionado la opción: {opcion}")
+
+Conclusión
+
+Con este ejercicio he aprendido a estructurar un programa sencillo en Python, comprendiendo la importancia de mostrar información al usuario, recibir sus datos y procesarlos. Además, he reforzado el uso de las funciones básicas print() e input(), que son esenciales para la interacción entre el programa y el usuario.

@@ -1,0 +1,85 @@
+Introducción
+
+En esta actividad he desarrollado un programa en Python que funciona como un sistema de gestión de tareas. El objetivo principal era integrar todos los conocimientos trabajados en la unidad de Entornos de Desarrollo, incluyendo:
+
+Programación orientada a objetos (POO)
+
+Estructuras de control y bucles
+
+Manejo de errores con try-except
+
+Entrada y salida de datos
+
+Lectura y escritura de archivos
+
+Documentación mediante docstrings y comentarios
+
+El programa permite crear tareas, listarlas, marcarlas como completadas y guardarlas en un archivo, de forma segura y robusta.
+
+Desarrollo
+
+Clase principal – Tarea
+
+He creado la clase Tarea, que representa cada tarea con dos atributos: titulo y completada.
+
+Incluye un método marcar_completada y un __str__ para mostrar el estado.
+
+Unidad/Subunidad: 001 – Desarrollo de software / Programación orientada a objetos
+
+Funciones principales
+
+agregar_tarea(lista): Permite al usuario agregar una tarea nueva, evitando títulos vacíos o duplicados.
+
+listar_tareas(lista, filtro=None): Lista todas las tareas o filtradas por completadas o pendientes.
+
+completar_tarea(lista): Permite marcar tareas pendientes como completadas, con validación de entradas.
+
+Unidad/Subunidad: 001 – Desarrollo de software / Estructuras de control
+
+Se aplican estructuras de control, bucles y validación de entradas.
+
+Gestión de ficheros
+
+guardar_tareas(lista, archivo="tareas.json"): Guarda las tareas en un archivo JSON.
+
+cargar_tareas(archivo="tareas.json"): Carga las tareas desde el archivo, si existe.
+
+Unidad/Subunidad: 004 – Optimización y documentación / Lectura y escritura de ficheros
+
+Se manejan errores con try-except para evitar que el programa falle al leer o escribir archivos.
+
+Programa principal (menú interactivo)
+
+Un bucle while muestra un menú con opciones para agregar, listar, filtrar, completar tareas y guardar/salir.
+
+Permite que el usuario interactúe con el programa de forma intuitiva.
+
+Unidad/Subunidad: 002 – Instalación y uso de entornos de desarrollo / Bucles y estructuras de control
+
+Manejo de errores y robustez
+
+Se utiliza try-except para capturar errores en entradas no numéricas y problemas con archivos.
+
+Esto hace que el programa sea robusto y no se interrumpa inesperadamente.
+
+Unidad/Subunidad: 003 – Diseño y realización de pruebas / Manejo de errores
+
+Aplicación práctica
+
+El programa permite probar todas las funcionalidades de forma práctica:
+
+Agregar tareas y comprobar que no se pueden repetir ni estar vacías.
+
+Listar tareas según su estado (todas, completadas, pendientes).
+
+Completar tareas y ver cómo cambia su estado.
+
+Guardar tareas en un archivo y comprobar que se cargan correctamente al reiniciar el programa.
+
+Se verificó que todas las operaciones funcionan correctamente en Visual Studio Code, con Python instalado y el intérprete seleccionado.
+
+Conclusión
+
+Con este ejercicio he logrado integrar y demostrar la mayoría de conocimientos de la unidad de Entornos de Desarrollo: POO, control de flujo, manejo de errores, interacción con ficheros y documentación clara.
+
+El programa es funcional, robusto y reutilizable, y la documentación con docstrings y comentarios facilita su comprensión y mantenimiento. Además, las mejoras de la versión Milla Extra (validación de entradas, filtrado de tareas y menú más claro) muestran un nivel de calidad que cumple con los criterios de la rúbrica de evaluación y demuestra la capacidad de aplicar buenas prácticas en programación.

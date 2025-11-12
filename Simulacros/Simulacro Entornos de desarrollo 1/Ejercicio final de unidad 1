@@ -1,0 +1,85 @@
+Introducción
+
+En esta unidad hemos aprendido los fundamentos de varios lenguajes y tecnologías importantes para la programación y el desarrollo web: HTML, CSS, Python y SQL. El objetivo de esta actividad es describir sus características, compararlos y mostrar un ejemplo práctico de aplicación.
+
+Desarrollo
+
+Características de los lenguajes trabajados:
+
+HTML: lenguaje de marcado, usado para estructurar el contenido de las páginas web. No es un lenguaje de programación, pero es imprescindible para cualquier proyecto web. Es multiplataforma y se interpreta en cualquier navegador.
+
+CSS: lenguaje de estilos, que permite dar formato y diseño a los elementos creados con HTML. También es multiplataforma y se ejecuta en navegadores.
+
+Python: lenguaje de programación interpretado, multiplataforma, de alto nivel y fácil de leer. Es orientado a objetos y se usa para scripts, automatización, análisis de datos y desarrollo general de software.
+
+SQL: lenguaje estructurado para bases de datos, utilizado para crear, consultar y modificar datos en sistemas de gestión de bases de datos. Es interpretado por el SGBD (Sistema de Gestión de Bases de Datos).
+
+Comparativa resumida:
+
+Lenguaje	Tipo	Requiere intérprete/compilador	Multiplataforma	Uso principal
+HTML	Marcado	Navegador	Sí	Estructura de páginas web
+CSS	Estilos	Navegador	Sí	Diseño y presentación web
+Python	Programación	Intérprete	Sí	Scripts, automatización, IA
+SQL	Consultas	Sistema gestor de bases de datos	Sí	Gestión y manipulación de datos
+Aplicación práctica
+
+He realizado un pequeño proyecto que combina HTML, CSS, Python y SQL:
+
+HTML y CSS: una página web simple donde el usuario puede introducir su nombre.
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejemplo</title>
+    <style>
+        body { font-family: Arial; text-align: center; margin-top: 50px; }
+        input, button { padding: 10px; margin-top: 10px; }
+    </style>
+</head>
+<body>
+    <h1>Bienvenido</h1>
+    <p>Introduce tu nombre:</p>
+    <input type="text" id="nombre">
+    <button onclick="mostrarMensaje()">Enviar</button>
+
+    <script>
+        function mostrarMensaje() {
+            let nombre = document.getElementById('nombre').value;
+            alert('Hola ' + nombre + ', bienvenido!');
+        }
+    </script>
+</body>
+</html>
+
+
+Python: se podría usar para procesar los datos del formulario y conectarlo con la base de datos.
+
+import sqlite3
+
+# Conectar a la base de datos (o crearla)
+conn = sqlite3.connect('usuarios.db')
+cursor = conn.cursor()
+
+# Crear tabla
+cursor.execute('''CREATE TABLE IF NOT EXISTS usuarios (nombre TEXT)''')
+
+# Insertar un dato
+nombre = input("Introduce tu nombre: ")
+cursor.execute("INSERT INTO usuarios VALUES (?)", (nombre,))
+conn.commit()
+
+print("Nombre guardado correctamente")
+conn.close()
+
+
+SQL: se usa dentro de Python para manipular la base de datos, por ejemplo:
+
+SELECT * FROM usuarios;
+
+
+Este ejemplo combina la interfaz web, la programación en Python y la gestión de datos con SQL.
+
+Conclusión
+
+En esta unidad he aprendido a trabajar con HTML, CSS, Python y SQL, cada uno con su función específica. HTML y CSS permiten crear páginas web estructuradas y visualmente atractivas, Python permite programar de forma lógica y flexible, y SQL gestiona y organiza los datos de manera eficiente. Esta combinación me da una base sólida para crear proyectos completos que integren interfaz, lógica y almacenamiento de datos.
