@@ -1,0 +1,36 @@
+1. Introducción
+
+El objetivo de esta actividad fue diseñar y crear una base de datos para un blog o portafolio personal, aplicando los conceptos de bases de datos relacionales vistos en la unidad. Esto incluye la creación de tablas, claves primarias y foráneas, inserción de registros, consultas cruzadas (joins), vistas y gestión de usuarios con permisos. La finalidad es poder organizar la información de manera estructurada y poder acceder a ella de forma eficiente.
+
+2. Desarrollo / Aplicación práctica
+
+Para realizar la práctica, se siguieron los siguientes pasos:
+
+Creación de la base de datos:
+Se creó la base de datos blog para almacenar toda la información del portafolio.
+
+Creación de tablas:
+
+Tabla autores: contiene información de los autores con id_autor como clave primaria.
+
+Tabla noticias: almacena las noticias o piezas del portafolio, con id_noticia como clave primaria y autor_id como clave foránea que referencia a autores.
+
+Inserción de registros:
+Se añadieron autores y noticias de ejemplo para poder probar las consultas y la vista.
+
+Ejemplo de autor: Juan Pérez
+
+Ejemplo de noticia: “Mi primer proyecto”, vinculada a Juan Pérez.
+
+Consultas cruzadas (LEFT JOIN):
+Se realizó un join entre noticias y autores para poder mostrar todas las noticias junto con los datos del autor correspondiente. Esto permite combinar la información de ambas tablas de forma eficiente.
+
+Creación de vista:
+Se creó la vista vista_noticias_autores para simplificar futuras consultas mostrando directamente noticias con sus autores.
+
+Gestión de usuarios y permisos:
+Se creó un usuario específico con permisos de lectura, inserción, actualización y eliminación sobre la base de datos blog, lo que permite gestionar la información de manera controlada y segura.
+
+3. Conclusión
+
+Con esta actividad he podido aplicar de forma práctica los conceptos de bases de datos relacionales, como la creación de tablas con claves primarias y foráneas, la inserción de datos, la realización de consultas cruzadas y la creación de vistas. Además, he aprendido a gestionar usuarios y permisos, asegurando un acceso controlado a la información. Esta práctica refuerza la importancia de una estructura de datos bien organizada para proyectos de blogs o portafolios, facilitando la gestión y consulta de la información.

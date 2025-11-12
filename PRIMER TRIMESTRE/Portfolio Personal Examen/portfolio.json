@@ -1,0 +1,17 @@
+[
+  {
+    "titulo": "Reserva de pistas",
+    "descripcion": "Página web para reservar pistas deportivas de un polideportivo.",
+    "imagen": "imagenes/futbol.jpg"
+  },
+  {
+    "titulo": "Base de datos",
+    "descripcion": "Base de datos para almacenar productos en stock y precios",
+    "imagen": "imagenes/sneakrs.jpg"
+  },
+  {
+    "titulo": "Curriculum",
+    "descripcion": "Curriculum personal.",
+    "imagen": "imagenes/cv.jpg"
+  }
+]

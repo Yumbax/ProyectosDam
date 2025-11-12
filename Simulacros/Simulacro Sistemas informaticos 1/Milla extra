@@ -1,5 +1,6 @@
 Ejercicio de Milla Extra – Sistemas Informáticos
 Proyecto: Servidor Web Multiusuario con Automatización y Seguridad
+
 Introducción y contextualización (Unidad 1: Conceptos básicos de sistemas informáticos)
 
 En este ejercicio he creado una infraestructura completa en VirtualBox simulando un entorno profesional: un servidor Ubuntu Server 24.04 con varios servicios instalados y configurados, varios usuarios con distintos permisos, y scripts de automatización para facilitar la administración.
@@ -188,7 +189,7 @@ Backup de configuración del servidor web
 
 sudo tar -cvzf backup_html.tar.gz /var/www/html
 
-Conclusión (Unidad 8: Administración y documentación de sistemas)
+Conclusión 
 
 Con este ejercicio he integrado todo lo aprendido durante el trimestre en Sistemas Informáticos: instalación de un sistema operativo, configuración de red, gestión de usuarios, permisos, instalación y securización de servicios, y automatización con scripts.
 

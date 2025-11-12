@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <title>El portafolio de Diego</title>
+    <meta charset="utf-8">
+    <style>
+      body,html{background:grey;font-family:sans-serif;}
+      header,main,footer{background:white;padding:20px;text-align:center;margin:auto;width:600px;}
+      main{display:grid;grid-template-columns:auto auto auto;gap:20px;}
+      article img{width:100%;}
+      h3{color:#333;}
+      p{color:#555;}
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Diego Fernandez</h1>
+      <h2>Diegofo@outlook.es</h2>
+    </header>
+    <main>
+      <template id="plantilla_entrada">
+        <article>
+          <h3></h3>
+          <p></p>
+          <img src="">
+        </article>
+      </template>
+    </main>
+    <footer>
+      (c) 2025 Diego Fernandez Ortega
+    </footer>
+
+    <script>
+      let origen = document.querySelector("#plantilla_entrada")
+      let destino = document.querySelector("main")
+      fetch("portafolio.json")
+      .then(function(respuesta){return respuesta.json()})
+      .then(function(datos){
+        datos.forEach(function(dato){
+          let clon = origen.content.cloneNode(true)
+          clon.querySelector("h3").textContent = dato.titulo
+          clon.querySelector("p").textContent = dato.descripcion
+          clon.querySelector("img").src = dato.imagen
+          destino.appendChild(clon)
+        })
+      })
+    </script>
+  </body>
+</html>

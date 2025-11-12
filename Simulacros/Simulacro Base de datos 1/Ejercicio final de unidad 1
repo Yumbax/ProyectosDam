@@ -1,0 +1,118 @@
+Introducción
+
+En informática, un fichero es un conjunto de información almacenada en un soporte de forma organizada, que permite su posterior lectura, modificación y eliminación. Los ficheros son fundamentales para el almacenamiento de datos antes de utilizar un sistema gestor de bases de datos (SGBD), ya que permiten representar y conservar información de manera estructurada o semi-estructurada. Dependiendo del tipo de información y del acceso que se requiera, se emplean distintos tipos de ficheros: planos, indexados, de acceso directo o estructurados en formatos como JSON o XML, así como formatos de oficina como ODS u ODT.
+
+Desarrollo
+
+Los tipos de ficheros más habituales son:
+
+Ficheros planos:
+
+Contienen datos organizados de forma secuencial, normalmente en texto.
+
+Ventajas: fáciles de crear y manipular; compatibles con casi cualquier sistema.
+
+Limitaciones: lentos para búsquedas complejas y no permiten acceso aleatorio eficiente.
+
+Ejemplo: un archivo CSV (clientes.csv) con datos de clientes:
+
+id,nombre,apellido,email
+1,Carlos,García,carlos@email.com
+2,Ana,Pérez,ana@email.com
+
+
+Ficheros indexados:
+
+Permiten crear un índice para acceder más rápido a los registros según una clave.
+
+Ventajas: búsquedas rápidas, especialmente en grandes volúmenes de datos.
+
+Limitaciones: más complejos de mantener; el índice debe actualizarse al modificar datos.
+
+Ficheros de acceso directo:
+
+Permiten acceder a cualquier registro directamente mediante una posición o clave única.
+
+Ventajas: acceso muy rápido y eficiente.
+
+Limitaciones: requieren definir un esquema fijo; más difíciles de modificar.
+
+Ficheros estructurados (JSON, XML):
+
+Almacenan información jerárquica o con relaciones complejas.
+
+Ventajas: fáciles de leer por humanos y por programas; permiten representar datos anidados.
+
+Limitaciones: ocupan más espacio y requieren un parser para procesarlos.
+
+Ejemplo JSON:
+
+{
+  "clientes": [
+    {"id": 1, "nombre": "Carlos", "apellido": "García"},
+    {"id": 2, "nombre": "Ana", "apellido": "Pérez"}
+  ]
+}
+
+
+Ejemplo XML:
+
+<clientes>
+  <cliente id="1">
+    <nombre>Carlos</nombre>
+    <apellido>García</apellido>
+  </cliente>
+  <cliente id="2">
+    <nombre>Ana</nombre>
+    <apellido>Pérez</apellido>
+  </cliente>
+</clientes>
+
+
+Ficheros de oficina (ODS, ODT, XLSX):
+
+Usados para datos tabulares o documentos de texto.
+
+Ventajas: permiten trabajar con aplicaciones ofimáticas; incluyen formato visual y fórmulas.
+
+Limitaciones: no son tan flexibles para procesamiento automático con scripts.
+
+Aplicación práctica
+
+Como ejemplo real, he creado un archivo clientes.csv con los siguientes datos:
+
+id,nombre,apellido,email
+1,Carlos,García,carlos@email.com
+2,Ana,Pérez,ana@email.com
+3,Juan,López,juan@email.com
+
+
+Para representar los datos:
+
+Cada fila representa un registro (un cliente).
+
+Cada columna representa un atributo (id, nombre, apellido, email).
+
+Se separan con comas.
+
+Para acceder a los datos en un programa (por ejemplo Python):
+
+import csv
+
+with open('clientes.csv', newline='') as archivo:
+    lector = csv.DictReader(archivo)
+    for fila in lector:
+        print(fila['nombre'], fila['apellido'])
+
+
+Errores comunes y cómo evitarlos:
+
+Olvidar comillas en datos con comas: "García, Carlos"
+
+Usar separadores incorrectos (puntos y comas en lugar de comas)
+
+Saltos de línea incorrectos
+
+Conclusión
+
+En esta práctica he aprendido que los ficheros son una forma básica pero fundamental de almacenar y organizar datos antes de utilizar un SGBD. Conocer los distintos tipos de ficheros —planos, indexados, de acceso directo o estructurados— permite elegir la mejor forma de representar la información según las necesidades del proyecto. Este conocimiento facilita la transición al uso de bases de datos, donde los datos ya se gestionan de forma más eficiente y segura.

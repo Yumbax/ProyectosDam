@@ -1,0 +1,100 @@
+Introducción
+En esta actividad, el objetivo es instalar y configurar un servidor Ubuntu Server 24.04 en la máquina virtual que creé anteriormente. Este servidor servirá como entorno para ejecutar servicios básicos como SSH, Apache, MySQL y aplicaciones Python con Flask. Además, se asegurarán las conexiones y se probará la funcionalidad de cada servicio con un ejemplo “Hola Mundo”.
+
+Desarrollo
+
+1. Descarga e instalación de Ubuntu Server 24.04
+Descargué la ISO de Ubuntu Server 24.04 desde la página oficial de Ubuntu. Luego, en VirtualBox, seleccioné la máquina virtual creada previamente y configuré la ISO como disco de arranque. Inicié la máquina e instalé Ubuntu Server siguiendo los pasos del instalador: seleccioné idioma, zona horaria, partición de disco (por defecto) y usuario administrador.
+
+2. Instalación y configuración de servicios
+
+2.1. Instalar OpenSSH Server
+Para poder conectarme de manera remota, ejecuté:
+
+sudo apt update
+sudo apt install openssh-server
+
+
+Verifiqué que el servicio estuviera activo con:
+
+sudo systemctl status ssh
+
+
+Configuré el adaptador de red en modo puente para que la máquina virtual tenga acceso a la red local y pueda conectarme desde fuera mediante SSH. Probé la conexión desde mi equipo anfitrión usando:
+
+ssh usuario@ip_del_servidor
+
+
+2.2. Instalar Apache2
+Para servir páginas web básicas:
+
+sudo apt install apache2
+sudo systemctl enable apache2
+sudo systemctl start apache2
+
+
+Probé accediendo desde el navegador del equipo anfitrión a http://ip_del_servidor y vi la página de bienvenida de Apache.
+
+2.3. Instalar y asegurar MySQL Server
+
+sudo apt install mysql-server
+sudo mysql_secure_installation
+
+
+Seguí los pasos del script para asegurar la instalación: configuré contraseña de root, eliminé usuarios anónimos, deshabilité acceso remoto de root y eliminé bases de datos de prueba. Probé la conexión con:
+
+sudo mysql -u root -p
+
+
+2.4. Verificar que Python3 está instalado
+
+python3 --version
+
+
+Ubuntu Server 24.04 ya incluye Python3 por defecto.
+
+2.5. Instalar PIP
+
+sudo apt install python3-pip
+
+
+Verifiqué la instalación con:
+
+pip3 --version
+
+
+2.6. Instalar Flask
+
+pip3 install flask
+
+
+Creé un archivo app.py de prueba:
+
+from flask import Flask
+app = Flask(__name__)
+
+@app.route("/")
+def hello():
+    return "Hola Mundo desde Flask"
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0")
+
+
+Probé ejecutando:
+
+python3 app.py
+
+
+y accediendo a http://ip_del_servidor:5000 desde el navegador del anfitrión.
+
+2.7. Prueba final “Hola Mundo” en Apache, MySQL y Flask
+
+Apache: Accedí a http://ip_del_servidor y confirmé la página de prueba.
+
+MySQL: Creé una base de datos de prueba y un usuario para verificar el funcionamiento.
+
+Flask/Python: Accedí a la ruta principal y confirmé que mostraba “Hola Mundo desde Flask”.
+
+Conclusión
+He instalado y configurado un servidor Ubuntu Server 24.04 en VirtualBox, con acceso remoto mediante SSH, servidor web Apache2, base de datos MySQL y soporte de Python/Flask. Cada servicio ha sido probado con un ejemplo básico, asegurando que todo funciona correctamente. Esta práctica me ha permitido entender cómo se integran distintos servicios en un servidor Linux y cómo verificar su funcionamiento de manera práctica.

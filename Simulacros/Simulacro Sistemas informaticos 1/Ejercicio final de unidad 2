@@ -1,0 +1,32 @@
+Introducción
+En esta actividad, el objetivo es preparar un servidor que permita almacenar y ejecutar programas de manera eficiente. Para ello, es necesario analizar los componentes principales del servidor, como el procesador, la memoria RAM y el disco duro, y configurar una máquina virtual en VirtualBox que cumpla con estos requisitos. Esta práctica permite comprender cómo se dimensiona un servidor según las necesidades de las aplicaciones y cómo la virtualización facilita pruebas y despliegues sin necesidad de hardware físico adicional.
+
+Desarrollo
+
+1. Consideraciones sobre el procesador:
+Para un servidor, el procesador debe ser potente y soportar multitarea, ya que se ejecutarán varias aplicaciones simultáneamente. Lo recomendable es un procesador multinúcleo (Intel i5/i7 o AMD Ryzen 5/7) con soporte de virtualización (VT-x o AMD-V). Esto asegura un rendimiento fluido y estabilidad en la máquina virtual.
+
+2. Consideraciones sobre la RAM:
+La memoria RAM determina cuántos procesos y aplicaciones puede ejecutar el servidor al mismo tiempo. Para un servidor de pruebas, asignar 4-8 GB es suficiente; para un servidor más grande o con múltiples usuarios, conviene 8-16 GB, dejando siempre memoria para el sistema operativo anfitrión.
+
+3. Consideraciones sobre el disco duro virtual:
+El disco duro virtual debe tener espacio suficiente para instalar programas y almacenar datos. Se recomienda un VDI de tamaño dinámico de al menos 50 GB, ya que permite crecer según las necesidades sin ocupar todo el espacio físico desde el inicio.
+
+Aplicación práctica
+
+Abrí VirtualBox y seleccioné Nueva.
+
+Asigné un nombre a la máquina virtual y seleccioné Linux → Ubuntu (64-bit).
+
+Asigné 4 GB de RAM, suficiente para pruebas y dejando memoria libre para el sistema anfitrión.
+
+Creé un disco duro virtual VDI de 50 GB, tamaño dinámico, para que pueda expandirse según sea necesario.
+
+Configuré la máquina con 2 núcleos de CPU, aprovechando la virtualización del procesador físico.
+
+Instalé Ubuntu desde la ISO y completé la configuración.
+
+Esta máquina virtual cumple con los requisitos de procesador, RAM y disco comentados en clase y en los videos, y está lista para almacenar y ejecutar programas de manera segura y eficiente.
+
+Conclusión
+La preparación de un servidor virtual permite entender la importancia de seleccionar correctamente los recursos hardware según las necesidades de las aplicaciones. Un buen procesador, suficiente RAM y un disco flexible son esenciales para garantizar un rendimiento adecuado. La virtualización con VirtualBox facilita esta preparación, permitiendo crear entornos de prueba sin afectar el sistema físico y aprendiendo a dimensionar correctamente un servidor para distintos escenarios.

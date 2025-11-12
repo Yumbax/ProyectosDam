@@ -1,0 +1,39 @@
+Introducción
+
+En esta actividad he trabajado con la base de datos del blog creada en unidades anteriores. El objetivo era comprobar que puedo realizar operaciones de actualización y eliminación de datos utilizando sentencias SQL dentro de phpMyAdmin. Para ello he usado las tablas autores y entradas, que forman parte del sistema del blog.
+
+Aplicación práctica
+
+He accedido a phpMyAdmin, seleccionado la base de datos blog_virtual y, dentro de ella, he trabajado sobre la tabla autores.
+Primero he probado a actualizar los datos de un autor existente, y después he intentado eliminar un registro para comprobar el funcionamiento de las restricciones entre tablas.
+
+Desarrollo
+
+Para la operación de actualización, he ejecutado la siguiente consulta SQL:
+
+UPDATE autores
+SET nombre = 'Carlos', apellido = 'García'
+WHERE id = 1;
+
+
+Con esta sentencia he modificado el nombre y apellido del autor con id = 1.
+Tras ejecutarla, he comprobado en la vista de datos que el cambio se había aplicado correctamente.
+
+Después he probado la operación de eliminación con esta sentencia:
+
+DELETE FROM autores
+WHERE id = 3;
+
+
+Al ejecutarla, MySQL mostró el siguiente mensaje de error:
+
+#1451 - Cannot delete or update a parent row: a foreign key constraint fails
+
+
+Este error indica que el autor que intentaba eliminar tiene entradas asociadas en la tabla entradas.
+Esto demuestra que la relación entre ambas tablas está correctamente configurada mediante una clave foránea, impidiendo borrar un autor que todavía tiene publicaciones vinculadas.
+
+Conclusión
+
+Gracias a esta práctica he comprobado que puedo realizar correctamente operaciones de actualización sobre los datos de mi base de datos y que las restricciones de integridad referencial funcionan al intentar eliminar registros relacionados.
+La actividad me ha servido para entender mejor cómo funcionan las claves foráneas y la importancia de mantener la coherencia de los datos dentro de una base de datos relacional.

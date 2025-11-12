@@ -59,3 +59,11 @@ fetch('curriculum.json')
 
     })
     .catch(error => console.error('Error al cargar el JSON:', error));
+    fetch('curriculum.json')
+  .then(response => {
+      console.log('Archivo JSON cargado correctamente');
+      return response.json();
+  })
+  .then(data => console.log(data))
+  .catch(error => console.error('Error al cargar el JSON:', error));
+
